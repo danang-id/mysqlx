@@ -29,10 +29,10 @@ This library is available through package manager ([npm](https://www.npmjs.org/)
 
 ```bash
 # If you're using NPM
-npm install --save simple-crypto-js
+npm install --save mysqlx
 
 # If you're using Yarn
-yarn add simple-crypto-js
+yarn add mysqlx
 ```
 
 Then, imports **_mysqlx_** in your project.
@@ -96,4 +96,4 @@ This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENS
 
 ## Acknowledgments
 
-* Static wrapper of MySQL Connector/Node.js[crypto-js](https://github.com/mysql/mysql-connector-nodejs) library.
+* Static wrapper of [MySQL Connector/Node.js](https://github.com/mysql/mysql-connector-nodejs) library.
