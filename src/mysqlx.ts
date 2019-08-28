@@ -60,3 +60,13 @@ export function getVersion(): string {
 export function getXVersion(): string {
 	return mysql.getVersion();
 }
+
+export default {
+	LockContention,
+	DataModel,
+	expr,
+	getClient,
+	getSession,
+	getVersion,
+	getXVersion
+}
