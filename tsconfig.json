@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"target": "es3",
+		"module": "commonjs",
+		"lib": [ "es2015" ],
+		"declaration": true,
+		"sourceMap": true,
+		"outDir": "./lib",
+		"removeComments": false,
+		"strict": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"exclude": [
+		"node_modules",
+		"**/*.spec.ts",
+		"**/*.test.ts"
+	],
+	"include": [
+		"src/**/*.ts"
+	]
+}
