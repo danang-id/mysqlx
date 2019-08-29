@@ -13,36 +13,36 @@
  * limitations under the License.
  */
 
-import Table from './Table';
-import SelectOperationResult from './SelectOperationResult';
-import Metadata from "./types/Metadata";
-import Row from "./types/Row";
+import SelectOperationResult from './SelectOperationResult'
+import { ISelectOperationResult, ITable, ITableSelect } from './interfaces'
+import { Metadata, Row } from './types'
 
-export class TableSelect {
+export class TableSelect implements ITableSelect {
+	private readonly table: ITable
+	private xTableSelect: any
 
-	private readonly table: Table;
-	private xTableSelect: any;
-
-	constructor(table: Table, xTableSelect: any) {
-		this.table = table;
-		this.xTableSelect = xTableSelect;
+	constructor(table: ITable, xTableSelect: any) {
+		this.table = table
+		this.xTableSelect = xTableSelect
 	}
-	
-	public async execute(): Promise<SelectOperationResult> {
+
+	public async execute(): Promise<ISelectOperationResult> {
 		try {
-			const rows: Row[][] = [];
-			let metadata: Metadata = [];
-			const xResult = await this.xTableSelect.execute((row: Row[]) => {
-				rows.push(row);
-			}, (meta: Metadata) => {
-				metadata = meta;
-			});
-			return new SelectOperationResult(xResult, rows, metadata);
+			const rows: Row[][] = []
+			let metadata: Metadata = []
+			const xResult = await this.xTableSelect.execute(
+				(row: Row[]) => {
+					rows.push(row)
+				},
+				(meta: Metadata) => {
+					metadata = meta
+				}
+			)
+			return new SelectOperationResult(xResult, rows, metadata)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
-
 }
 
-export default TableSelect;
+export default TableSelect

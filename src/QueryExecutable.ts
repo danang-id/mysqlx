@@ -12,38 +12,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-import Metadata from "./types/Metadata";
-import Row from "./types/Row";
 
-export class QueryExecutable {
+import { IQueryExecutable } from './interfaces'
+import { Metadata, Row } from './types'
 
-	private readonly xSqlExecute: any;
+export class QueryExecutable implements IQueryExecutable {
+	private readonly xSqlExecute: any
 
 	constructor(xSqlExecute: any) {
-		this.xSqlExecute = xSqlExecute;
+		this.xSqlExecute = xSqlExecute
 	}
 
-	public bind(...values: string[]): QueryExecutable {
-		this.xSqlExecute.bind(...values);
-		return this;
+	public bind(...values: string[]): IQueryExecutable {
+		this.xSqlExecute.bind(...values)
+		return this
 	}
 
-	public async execute(): Promise<{ rows: Row[][], metadata: Metadata }> {
+	public async execute(): Promise<{ rows: Row[][]; metadata: Metadata }> {
 		try {
-			const rows: Row[][] = [];
-			let metadata: Metadata = [];
-			await this.xSqlExecute.execute((row: Row[]) => {
-				rows.push(row);
-			}, (meta: Metadata) => {
-				metadata = meta;
-			});
-			return { rows, metadata };
+			const rows: Row[][] = []
+			let metadata: Metadata = []
+			await this.xSqlExecute.execute(
+				(row: Row[]) => {
+					rows.push(row)
+				},
+				(meta: Metadata) => {
+					metadata = meta
+				}
+			)
+			return { rows, metadata }
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
-
 }
 
-export default QueryExecutable;
+export default QueryExecutable

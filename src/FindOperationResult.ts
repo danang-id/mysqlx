@@ -13,22 +13,21 @@
  * limitations under the License.
  */
 
-import OperationResult from './OperationResult';
-import Document from './types/Document';
+import OperationResult from './OperationResult'
+import { IFindOperationResult } from './interfaces'
+import { Document } from './types'
 
-export class FindOperationResult extends OperationResult{
-
-	private readonly documents: Document[];
+export class FindOperationResult extends OperationResult implements IFindOperationResult {
+	private readonly documents: Document[]
 
 	constructor(xResult: any, documents: Document[]) {
-		super(xResult);
-		this.documents = documents;
+		super(xResult)
+		this.documents = documents
 	}
 
 	public getDocuments(): Document[] {
-		return this.documents;
+		return this.documents
 	}
-
 }
 
-export default FindOperationResult;
+export default FindOperationResult

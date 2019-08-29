@@ -13,28 +13,26 @@
  * limitations under the License.
  */
 
-import Table from './Table';
-import OperationResult from './OperationResult';
+import { IOperationResult, ITable, ITableDelete } from './interfaces'
+import OperationResult from './OperationResult'
 
-export class TableDelete {
+export class TableDelete implements ITableDelete {
+	private readonly table: ITable
+	private xTableDelete: any
 
-	private readonly table: Table;
-	private xTableDelete: any;
-
-	constructor(table: Table, xTableDelete: any) {
-		this.table = table;
-		this.xTableDelete = xTableDelete;
+	constructor(table: ITable, xTableDelete: any) {
+		this.table = table
+		this.xTableDelete = xTableDelete
 	}
 
-	public async execute(): Promise<OperationResult> {
+	public async execute(): Promise<IOperationResult> {
 		try {
-			const xResult = await this.xTableDelete.execute();
-			return new OperationResult(xResult);
+			const xResult = await this.xTableDelete.execute()
+			return new OperationResult(xResult)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
-
 }
 
-export default TableDelete;
+export default TableDelete

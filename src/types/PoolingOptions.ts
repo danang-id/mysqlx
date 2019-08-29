@@ -20,4 +20,4 @@ export type PoolingOptions = {
 	}
 }
 
-export default PoolingOptions;
+export default PoolingOptions

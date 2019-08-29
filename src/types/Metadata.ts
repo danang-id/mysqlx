@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import Column from "./Column";
+import Column from './Column'
 
-export type Metadata = Column[];
-export default Metadata;
+export type Metadata = Column[]
+export default Metadata

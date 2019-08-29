@@ -13,5 +13,5 @@
  * limitations under the License.
  */
 
-export type Document = { [key: string]: any };
-export default Document;
+export type Document = { [key: string]: any }
+export default Document

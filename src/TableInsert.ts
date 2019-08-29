@@ -13,39 +13,36 @@
  * limitations under the License.
  */
 
-import Table from './Table';
-import Document from './types/Document';
-import OperationResult from './OperationResult';
+import OperationResult from './OperationResult'
+import { IOperationResult, ITable, ITableInsert } from './interfaces';
 
-export class TableInsert {
+export class TableInsert implements ITableInsert {
+	private readonly table: ITable
+	private xTableInsert: any
 
-	private readonly table: Table;
-	private xTableInsert: any;
-
-	constructor(table: Table, xTableInsert: any) {
-		this.table = table;
-		this.xTableInsert = xTableInsert;
+	constructor(table: ITable, xTableInsert: any) {
+		this.table = table
+		this.xTableInsert = xTableInsert
 	}
 
-	public values(values: any[]): TableInsert;
-	public values(...values: any[]): TableInsert {
+	public values(values: any[]): ITableInsert
+	public values(...values: any[]): ITableInsert {
 		try {
-			this.xTableInsert = this.xTableInsert.values(...values);
-			return this;
+			this.xTableInsert = this.xTableInsert.values(...values)
+			return this
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public async execute(): Promise<OperationResult> {
+	public async execute(): Promise<IOperationResult> {
 		try {
-			const xResult = await this.xTableInsert.execute();
-			return new OperationResult(xResult);
+			const xResult = await this.xTableInsert.execute()
+			return new OperationResult(xResult)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
-
 }
 
-export default TableInsert;
+export default TableInsert

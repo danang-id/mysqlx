@@ -13,146 +13,136 @@
  * limitations under the License.
  */
 
-import isBoolean from 'lodash.isboolean';
-import isNumber from 'lodash.isnumber';
-import isString from 'lodash.isstring';
-import Client from './Client';
-import Session from './Session';
-import Schema from './Schema';
-import TableInsert from './TableInsert';
-import TableSelect from './TableSelect';
-import TableUpdate from './TableUpdate';
-import TableDelete from './TableDelete';
-import OperationResult from './OperationResult';
-import Document from './types/Document';
-import IndexDefinition from './types/IndexDefinition';
-import SearchCondition from './types/SearchCondition';
-import SearchConditionString from './types/SearchConditionString';
+import isBoolean from 'lodash.isboolean'
+import isNumber from 'lodash.isnumber'
+import isString from 'lodash.isstring'
+import TableDelete from './TableDelete'
+import TableInsert from './TableInsert'
+import TableSelect from './TableSelect'
+import TableUpdate from './TableUpdate'
+import { IClient, ISchema, ISession, ITable, ITableDelete, ITableInsert, ITableSelect, ITableUpdate } from './interfaces'
+import { SearchCondition, SearchConditionString } from './types'
 
-export class Table {
+export class Table implements ITable {
+	private readonly schema: ISchema
+	private readonly xTable: any
 
-	private readonly schema: Schema;
-	private readonly xTable: any;
-
-	constructor(schema: Schema, xTable: any) {
-		this.schema = schema;
-		this.xTable = xTable;
+	constructor(schema: ISchema, xTable: any) {
+		this.schema = schema
+		this.xTable = xTable
 	}
 
 	private static createConditionString(condition: SearchCondition | SearchConditionString): SearchConditionString {
-		let conditionString: SearchConditionString = '';
+		let conditionString: SearchConditionString = ''
 		if (isString(condition)) {
-			conditionString = condition;
+			conditionString = condition
 		} else if (isBoolean(condition)) {
-			conditionString = condition.toString();
+			conditionString = condition.toString()
 		} else {
-			let firstCondition = true;
+			let firstCondition = true
 			for (const key in condition) {
 				if (condition.hasOwnProperty(key)) {
-					const value = isNumber(condition[key]) || isBoolean(condition[key])
-						? condition[key].toString()
-						: `"${ condition[key] }"`;
+					const value = isNumber(condition[key]) || isBoolean(condition[key]) ? condition[key].toString() : `"${condition[key]}"`
 					conditionString = conditionString
 						.concat(firstCondition ? '' : '  & ')
 						.concat(key)
 						.concat('=')
-						.concat(value);
+						.concat(value)
 					if (firstCondition) {
-						firstCondition = false;
+						firstCondition = false
 					}
 				}
 			}
 		}
-		return conditionString;
+		return conditionString
 	}
 
-	public getClient(): Client | null {
-		return this.schema.getClient();
+	public getClient(): IClient | null {
+		return this.schema.getClient()
 	}
 
-	public getSession(): Session {
-		return this.schema.getSession();
+	public getSession(): ISession {
+		return this.schema.getSession()
 	}
 
-	public getSchema(): Schema {
-		return this.schema;
+	public getSchema(): ISchema {
+		return this.schema
 	}
 
-	public getXTable() {
-		return this.xTable;
+	public getXTable(): any {
+		return this.xTable
 	}
 
 	public async count(): Promise<number> {
 		try {
-			return await this.xTable.count();
+			return await this.xTable.count()
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public delete(condition: SearchCondition | SearchConditionString = true): TableDelete {
+	public delete(condition: SearchCondition | SearchConditionString = true): ITableDelete {
 		try {
-			const conditionString = Table.createConditionString(condition);
-			const xTableRemove = this.xTable.delete(conditionString);
-			return new TableDelete(this, xTableRemove);
+			const conditionString = Table.createConditionString(condition)
+			const xTableRemove = this.xTable.delete(conditionString)
+			return new TableDelete(this, xTableRemove)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public async existsInDatabase(): Promise<boolean> {
 		try {
-			return await this.xTable.existsInDatabase();
+			return await this.xTable.existsInDatabase()
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public getName(): string {
-		return this.xTable.getName();
+		return this.xTable.getName()
 	}
 
-	public insert(fields: string[]): TableInsert;
-	public insert(fields: { [k: string]: any }): TableInsert;
-	public insert(...fields: string[]): TableInsert;
-	public insert(...fields: any[]): TableInsert {
+	public insert(fields: string[]): ITableInsert
+	public insert(fields: { [k: string]: any }): ITableInsert
+	public insert(...fields: string[]): ITableInsert
+	public insert(...fields: any[]): ITableInsert {
 		try {
-			const xTableInsert = this.xTable.insert(...fields);
-			return new TableInsert(this, xTableInsert);
+			const xTableInsert = this.xTable.insert(...fields)
+			return new TableInsert(this, xTableInsert)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public inspect(): Object {
-		return this.xTable.inspect();
+		return this.xTable.inspect()
 	}
 
 	public async isView(): Promise<boolean> {
-		return await this.xTable.isView();
+		return await this.xTable.isView()
 	}
 
-	public select(fields: string[]): TableSelect;
-	public select(...fields: string[]): TableSelect;
-	public select(...fields: any[]): TableSelect {
+	public select(fields: string[]): ITableSelect
+	public select(...fields: string[]): ITableSelect
+	public select(...fields: any[]): ITableSelect {
 		try {
-			const xTableSelect = this.xTable.select(...fields);
-			return new TableSelect(this, xTableSelect);
+			const xTableSelect = this.xTable.select(...fields)
+			return new TableSelect(this, xTableSelect)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public update(condition?: SearchCondition | SearchConditionString): TableUpdate {
+	public update(condition?: SearchCondition | SearchConditionString): ITableUpdate {
 		try {
-			const conditionString = condition !== void 0 ? Table.createConditionString(condition) : condition;
-			const xTableUpdate = this.xTable.modify(conditionString);
-			return new TableUpdate(this, xTableUpdate);
+			const conditionString = condition !== void 0 ? Table.createConditionString(condition) : condition
+			const xTableUpdate = this.xTable.modify(conditionString)
+			return new TableUpdate(this, xTableUpdate)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
-
 }
 
-export default Table;
+export default Table

@@ -17,4 +17,4 @@ export type CreateCollectionOptions = {
 	ReuseExistingObject?: boolean
 }
 
-export default CreateCollectionOptions;
+export default CreateCollectionOptions

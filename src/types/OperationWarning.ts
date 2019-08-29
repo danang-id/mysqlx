@@ -17,6 +17,6 @@ export type OperationWarning = {
 	level: number
 	code: number
 	msg: string
-};
+}
 
-export default OperationWarning;
+export default OperationWarning

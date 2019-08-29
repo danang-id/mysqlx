@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import DataModel from './DataModel'
+import { ISession } from './index'
 
-export type ParserOptions = {
-	mode?: DataModel
+export interface IClient {
+	getXClient(): any
+	getSession(): Promise<ISession>
+	close(): Promise<void>
 }
-export default ParserOptions
+
+export default IClient

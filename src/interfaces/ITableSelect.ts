@@ -13,9 +13,10 @@
  * limitations under the License.
  */
 
-import DataModel from './DataModel'
+import { ISelectOperationResult } from './index'
 
-export type ParserOptions = {
-	mode?: DataModel
+export interface ITableSelect {
+	execute(): Promise<ISelectOperationResult>
 }
-export default ParserOptions
+
+export default ITableSelect

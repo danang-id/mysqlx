@@ -13,5 +13,5 @@
  * limitations under the License.
  */
 
-export type LockContention = 0 | 1 | 2;
-export default LockContention;
+export type LockContention = 0 | 1 | 2
+export default LockContention

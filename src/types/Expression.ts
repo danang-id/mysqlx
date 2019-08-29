@@ -13,5 +13,5 @@
  * limitations under the License.
  */
 
-export type Expression = string;
-export default Expression;
+export type Expression = string
+export default Expression

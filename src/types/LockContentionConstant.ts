@@ -17,5 +17,5 @@ export type LockContentionConstant = {
 	DEFAULT: 0
 	NOWAIT: 1
 	SKIP_LOCKED: 2
-};
-export default LockContentionConstant;
+}
+export default LockContentionConstant

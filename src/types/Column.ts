@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import DataModel from "./DataModel";
+import DataModel from './DataModel'
 
 export type Column = {
 	type: number
@@ -28,6 +28,5 @@ export type Column = {
 	length: number
 	flags?: string
 	contentType?: DataModel
-
 }
-export default Column;
+export default Column

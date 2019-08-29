@@ -13,38 +13,35 @@
  * limitations under the License.
  */
 
-import Table from './Table';
-import Document from './types/Document';
-import OperationResult from './OperationResult';
+import OperationResult from './OperationResult'
+import { IOperationResult, ITable, ITableUpdate } from './interfaces'
 
-export class TableUpdate {
+export class TableUpdate implements ITableUpdate {
+	private readonly table: ITable
+	private xTableUpdate: any
 
-	private readonly table: Table;
-	private xTableUpdate: any;
-
-	constructor(table: Table, xTableUpdate: any) {
-		this.table = table;
-		this.xTableUpdate = xTableUpdate;
+	constructor(table: ITable, xTableUpdate: any) {
+		this.table = table
+		this.xTableUpdate = xTableUpdate
 	}
 
-	public set(field: string, value: any): TableUpdate {
+	public set(field: string, value: any): ITableUpdate {
 		try {
-			this.xTableUpdate = this.xTableUpdate.set(field, value);
-			return this;
+			this.xTableUpdate = this.xTableUpdate.set(field, value)
+			return this
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public async execute(): Promise<OperationResult> {
+	public async execute(): Promise<IOperationResult> {
 		try {
-			const xResult = await this.xTableUpdate.execute();
-			return new OperationResult(xResult);
+			const xResult = await this.xTableUpdate.execute()
+			return new OperationResult(xResult)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
-
 }
 
-export default TableUpdate;
+export default TableUpdate

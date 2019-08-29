@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-import FieldDefinition from './FieldDefinition';
+import FieldDefinition from './FieldDefinition'
 
 export type IndexDefinition = {
 	type: string
 	fields: FieldDefinition[]
-};
+}
 
-export default IndexDefinition;
+export default IndexDefinition

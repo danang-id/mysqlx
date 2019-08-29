@@ -13,42 +13,39 @@
  * limitations under the License.
  */
 
-import Collection from './Collection';
-import Document from './types/Document';
-import Projection from './types/Projection';
-import FindOperationResult from './FindOperationResult';
+import FindOperationResult from './FindOperationResult'
+import { ICollection, ICollectionFind, IFindOperationResult } from './interfaces'
+import { Document, Projection } from './types'
 
-export class CollectionFind {
+export class CollectionFind implements ICollectionFind {
+	private readonly collection: ICollection
+	private xCollectionFind: any
 
-	private readonly collection: Collection;
-	private xCollectionFind: any;
-
-	constructor(collection: Collection, xCollectionFind: any) {
-		this.collection = collection;
-		this.xCollectionFind = xCollectionFind;
+	constructor(collection: ICollection, xCollectionFind: any) {
+		this.collection = collection
+		this.xCollectionFind = xCollectionFind
 	}
 
-	public fields(projections: Projection | Projection[]): CollectionFind {
+	public fields(projections: Projection | Projection[]): ICollectionFind {
 		try {
-			this.xCollectionFind = this.xCollectionFind.fields(projections);
-			return this;
+			this.xCollectionFind = this.xCollectionFind.fields(projections)
+			return this
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public async execute(): Promise<FindOperationResult> {
+	public async execute(): Promise<IFindOperationResult> {
 		try {
-			const documents: Document[] = [];
+			const documents: Document[] = []
 			const xResult = await this.xCollectionFind.execute((document: Document) => {
-				documents.push(document);
-			});
-			return new FindOperationResult(xResult, documents);
+				documents.push(document)
+			})
+			return new FindOperationResult(xResult, documents)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
-
 }
 
-export default CollectionFind;
+export default CollectionFind

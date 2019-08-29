@@ -13,8 +13,10 @@
  * limitations under the License.
  */
 
-export type SearchCondition = boolean | {
-	[key: string]: any
-};
+export type SearchCondition =
+	| boolean
+	| {
+			[key: string]: any
+	  }
 
-export default SearchCondition;
+export default SearchCondition

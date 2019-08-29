@@ -14,40 +14,38 @@
  */
 
 // @ts-ignore
-import mysql from '@mysql/xdevapi';
-import Session from './Session';
-import ConnectionOptions from './types/ConnectionOptions';
-import PoolingOptions from './types/PoolingOptions';
+import mysql from '@mysql/xdevapi'
+import Session from './Session'
+import { IClient, ISession } from './interfaces'
+import { ConnectionOptions, PoolingOptions } from './types'
 
-export class Client {
-
-	private readonly xClient: any;
+export class Client implements IClient {
+	private readonly xClient: any
 
 	constructor(connectionOptions: ConnectionOptions, poolingOptions?: PoolingOptions) {
-		this.xClient = mysql.getClient(connectionOptions, poolingOptions);
+		this.xClient = mysql.getClient(connectionOptions, poolingOptions)
 	}
 
-	public getXClient() {
-		return this.xClient;
+	public getXClient(): any {
+		return this.xClient
 	}
 
-	public async getSession(): Promise<Session> {
+	public async getSession(): Promise<ISession> {
 		try {
-			const xSession = await this.xClient.getSession();
-			return new Session(this, xSession);
+			const xSession = await this.xClient.getSession()
+			return new Session(this, xSession)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public async close() {
 		try {
-			await this.xClient.close();
+			await this.xClient.close()
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
-
 }
 
-export default Client;
+export default Client

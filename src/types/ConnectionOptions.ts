@@ -13,12 +13,14 @@
  * limitations under the License.
  */
 
-export type ConnectionOptions = string | {
-	host?: string
-	port?: number | string
-	password?: string
-	user?: string
-	schema?: string
-}
+export type ConnectionOptions =
+	| string
+	| {
+			host?: string
+			port?: number | string
+			password?: string
+			user?: string
+			schema?: string
+	  }
 
-export default ConnectionOptions;
+export default ConnectionOptions

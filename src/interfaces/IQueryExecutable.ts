@@ -13,9 +13,11 @@
  * limitations under the License.
  */
 
-import DataModel from './DataModel'
+import { Metadata, Row } from './../types'
 
-export type ParserOptions = {
-	mode?: DataModel
+export interface IQueryExecutable {
+	bind(...values: string[]): IQueryExecutable
+	execute(): Promise<{ rows: Row[][]; metadata: Metadata }>
 }
-export default ParserOptions
+
+export default IQueryExecutable

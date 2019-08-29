@@ -13,28 +13,26 @@
  * limitations under the License.
  */
 
-import Collection from './Collection';
-import OperationResult from './OperationResult';
+import OperationResult from './OperationResult'
+import { ICollection, ICollectionRemove, IOperationResult } from './interfaces'
 
-export class CollectionRemove {
+export class CollectionRemove implements ICollectionRemove {
+	private readonly collection: ICollection
+	private xCollectionRemove: any
 
-	private readonly collection: Collection;
-	private xCollectionRemove: any;
-
-	constructor(collection: Collection, xCollectionRemove: any) {
-		this.collection = collection;
-		this.xCollectionRemove = xCollectionRemove;
+	constructor(collection: ICollection, xCollectionRemove: any) {
+		this.collection = collection
+		this.xCollectionRemove = xCollectionRemove
 	}
 
-	public async execute(): Promise<OperationResult> {
+	public async execute(): Promise<IOperationResult> {
 		try {
-			const xResult = await this.xCollectionRemove.execute();
-			return new OperationResult(xResult);
+			const xResult = await this.xCollectionRemove.execute()
+			return new OperationResult(xResult)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
-
 }
 
-export default CollectionRemove;
+export default CollectionRemove

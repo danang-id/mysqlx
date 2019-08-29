@@ -13,5 +13,5 @@
  * limitations under the License.
  */
 
-export type ProtobufObject = { [key: string]: any };
-export default ProtobufObject;
+export type ProtobufObject = { [key: string]: any }
+export default ProtobufObject

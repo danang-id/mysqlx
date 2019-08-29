@@ -13,5 +13,5 @@
  * limitations under the License.
  */
 
-export type DataModel = 1 | 2;
-export default DataModel;
+export type DataModel = 1 | 2
+export default DataModel

@@ -13,5 +13,5 @@
  * limitations under the License.
  */
 
-export type Projection = string;
-export default Projection;
+export type Projection = string
+export default Projection

@@ -16,5 +16,5 @@
 export type DataModelConstant = {
 	DOCUMENT: 1
 	TABLE: 2
-};
-export default DataModelConstant;
+}
+export default DataModelConstant

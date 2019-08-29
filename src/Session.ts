@@ -13,136 +13,132 @@
  * limitations under the License.
  */
 
-import Client from './Client';
-import Schema from './Schema';
-import QueryExecutable from './QueryExecutable';
+import Client from './Client'
+import Schema from './Schema'
+import QueryExecutable from './QueryExecutable'
+import { ISession } from './interfaces'
 
-export class Session {
+export class Session implements ISession {
+	private readonly client: Client | null
+	private readonly xSession: any
 
-	private readonly client: Client | null;
-	private readonly xSession: any;
-
-	constructor(
-		client: Client | null,
-		xSession: any
-	) {
-		this.client = client;
-		this.xSession = xSession;
+	constructor(client: Client | null, xSession: any) {
+		this.client = client
+		this.xSession = xSession
 	}
 
 	public getClient(): Client | null {
-		return this.client;
+		return this.client
 	}
 
-	public getXSession() {
-		return this.xSession;
+	public getXSession(): any {
+		return this.xSession
 	}
 
 	public async commit(): Promise<boolean> {
 		try {
-			return await this.xSession.commit();
+			return await this.xSession.commit()
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public async createSchema(name: string): Promise<Schema> {
 		try {
-			const xSchema = await this.xSession.createSchema(name);
-			return new Schema(this, xSchema);
+			const xSchema = await this.xSession.createSchema(name)
+			return new Schema(this, xSchema)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public async dropSchema(name: string): Promise<boolean> {
 		try {
-			return await this.xSession.dropSchema(name);
+			return await this.xSession.dropSchema(name)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public getDefaultSchema(): Schema {
 		try {
-			const xSchema = this.xSession.getDefaultSchema();
-			return new Schema(this, xSchema);
+			const xSchema = this.xSession.getDefaultSchema()
+			return new Schema(this, xSchema)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public getSchema(name: string): Schema {
 		try {
-			const xSchema = this.xSession.getSchema(name);
-			return new Schema(this, xSchema);
+			const xSchema = this.xSession.getSchema(name)
+			return new Schema(this, xSchema)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public getSchemas(): Schema[] {
 		try {
-			const xSchemas = this.xSession.getSchemas();
-			const schemas: Schema[] = [];
+			const xSchemas = this.xSession.getSchemas()
+			const schemas: Schema[] = []
 			for (const xSchema of xSchemas) {
-				schemas.push(new Schema(this, xSchema));
+				schemas.push(new Schema(this, xSchema))
 			}
-			return schemas;
+			return schemas
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public async releaseSavepoint(name?: string): Promise<boolean> {
 		try {
-			return await this.xSession.releaseSavepoint(name);
+			return await this.xSession.releaseSavepoint(name)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public async rollback(): Promise<boolean> {
 		try {
-			return await this.xSession.rollback();
+			return await this.xSession.rollback()
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public async rollbackTo(name?: string): Promise<boolean> {
 		try {
-			return await this.xSession.rollbackTo(name);
+			return await this.xSession.rollbackTo(name)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public async setSavepoint(name?: string): Promise<string> {
 		try {
-			return await this.xSession.setSavepoint(name);
+			return await this.xSession.setSavepoint(name)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public sql(query: string): QueryExecutable {
 		try {
-			const xSqlExecute = this.xSession.sql(query);
-			return new QueryExecutable(xSqlExecute);
+			const xSqlExecute = this.xSession.sql(query)
+			return new QueryExecutable(xSqlExecute)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public async startTransaction(): Promise<boolean> {
 		try {
-			return await this.xSession.startTransaction();
+			return await this.xSession.startTransaction()
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
-
 }
 
-export default Session;
+export default Session

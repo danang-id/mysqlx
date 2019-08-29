@@ -13,9 +13,15 @@
  * limitations under the License.
  */
 
-import DataModel from './DataModel'
+import { OperationWarning } from './../types'
 
-export type ParserOptions = {
-	mode?: DataModel
+export interface IOperationResult {
+	getAffectedItemsCount(): number
+	getAffectedRowsCount(): number
+	getAutoIncrementValue(): number
+	getGeneratedIds(): string[]
+	getWarnings(): OperationWarning[]
+	getWarningsCount(): number
 }
-export default ParserOptions
+
+export default IOperationResult

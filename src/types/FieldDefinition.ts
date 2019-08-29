@@ -21,4 +21,4 @@ export type FieldDefinition = {
 	srid?: number
 }
 
-export default FieldDefinition;
+export default FieldDefinition

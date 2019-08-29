@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import DataModel from './DataModel'
+import { IOperationResult } from './index'
 
-export type ParserOptions = {
-	mode?: DataModel
+export interface ITableInsert {
+	values(values: any[]): ITableInsert
+	values(...values: any[]): ITableInsert
+	execute(): Promise<IOperationResult>
 }
-export default ParserOptions
+
+export default ITableInsert

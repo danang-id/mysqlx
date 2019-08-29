@@ -13,9 +13,15 @@
  * limitations under the License.
  */
 
-import DataModel from './DataModel'
+import { IOperationResult } from './index'
+import { Document } from './../types'
 
-export type ParserOptions = {
-	mode?: DataModel
+export interface ICollectionModify {
+	arrayAppend(field: string, value: any): ICollectionModify
+	arrayInsert(field: string, value: any): ICollectionModify
+	patch(document: Document): ICollectionModify
+	set(field: string, value: any): ICollectionModify
+	execute(): Promise<IOperationResult>
 }
-export default ParserOptions
+
+export default ICollectionModify

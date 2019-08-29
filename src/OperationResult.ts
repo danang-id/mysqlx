@@ -13,40 +13,39 @@
  * limitations under the License.
  */
 
-import OperationWarning from './types/OperationWarning';
+import { IOperationResult } from './interfaces'
+import { OperationWarning } from './types'
 
-export class OperationResult {
-
-	private readonly xResult: any;
+export class OperationResult implements IOperationResult {
+	private readonly xResult: any
 
 	constructor(xResult: any) {
-		this.xResult = xResult;
+		this.xResult = xResult
 	}
 
 	public getAffectedItemsCount(): number {
-		return this.xResult.getAffectedItemsCount();
+		return this.xResult.getAffectedItemsCount()
 	}
 
 	public getAffectedRowsCount(): number {
-		return this.xResult.getAffectedRowsCount();
+		return this.xResult.getAffectedRowsCount()
 	}
 
 	public getAutoIncrementValue(): number {
-		return this.xResult.getAutoIncrementValue();
+		return this.xResult.getAutoIncrementValue()
 	}
 
 	public getGeneratedIds(): string[] {
-		return this.xResult.getGeneratedIds();
+		return this.xResult.getGeneratedIds()
 	}
 
 	public getWarnings(): OperationWarning[] {
-		return this.xResult.getWarnings();
+		return this.xResult.getWarnings()
 	}
 
 	public getWarningsCount(): number {
-		return this.xResult.getWarningsCount();
+		return this.xResult.getWarningsCount()
 	}
-
 }
 
-export default OperationResult;
+export default OperationResult

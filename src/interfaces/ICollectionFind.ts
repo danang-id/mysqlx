@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import DataModel from './DataModel'
+import { IFindOperationResult } from './index'
+import { Projection } from './../types'
 
-export type ParserOptions = {
-	mode?: DataModel
+export interface ICollectionFind {
+	fields(projections: Projection | Projection[]): ICollectionFind
+	execute(): Promise<IFindOperationResult>
 }
-export default ParserOptions
+
+export default ICollectionFind

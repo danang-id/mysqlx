@@ -13,74 +13,72 @@
  * limitations under the License.
  */
 
-import Collection from './Collection';
-import Document from './types/Document';
-import OperationResult from './OperationResult';
+import OperationResult from './OperationResult'
+import { ICollection, ICollectionModify, IOperationResult } from './interfaces'
+import { Document } from './types'
 
-export class CollectionModify {
+export class CollectionModify implements ICollectionModify {
+	private readonly collection: ICollection
+	private xCollectionModify: any
 
-	private readonly collection: Collection;
-	private xCollectionModify: any;
-
-	constructor(collection: Collection, xCollectionModify: any) {
-		this.collection = collection;
-		this.xCollectionModify = xCollectionModify;
+	constructor(collection: ICollection, xCollectionModify: any) {
+		this.collection = collection
+		this.xCollectionModify = xCollectionModify
 	}
 
-	public arrayAppend(field: string, value: any): CollectionModify {
+	public arrayAppend(field: string, value: any): ICollectionModify {
 		try {
-			this.xCollectionModify = this.xCollectionModify.arrayAppend(field, value);
-			return this;
+			this.xCollectionModify = this.xCollectionModify.arrayAppend(field, value)
+			return this
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public arrayInsert(field: string, value: any): CollectionModify {
+	public arrayInsert(field: string, value: any): ICollectionModify {
 		try {
-			this.xCollectionModify = this.xCollectionModify.arrayInsert(field, value);
-			return this;
+			this.xCollectionModify = this.xCollectionModify.arrayInsert(field, value)
+			return this
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public patch(document: Document): CollectionModify {
+	public patch(document: Document): ICollectionModify {
 		try {
-			this.xCollectionModify = this.xCollectionModify.patch(document);
-			return this;
+			this.xCollectionModify = this.xCollectionModify.patch(document)
+			return this
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public set(field: string, value: any): CollectionModify {
+	public set(field: string, value: any): ICollectionModify {
 		try {
-			this.xCollectionModify = this.xCollectionModify.set(field, value);
-			return this;
+			this.xCollectionModify = this.xCollectionModify.set(field, value)
+			return this
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public unset(field: string, value: any): CollectionModify {
+	public unset(field: string, value: any): ICollectionModify {
 		try {
-			this.xCollectionModify = this.xCollectionModify.unset(field, value);
-			return this;
+			this.xCollectionModify = this.xCollectionModify.unset(field, value)
+			return this
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public async execute(): Promise<OperationResult> {
+	public async execute(): Promise<IOperationResult> {
 		try {
-			const xResult = await this.xCollectionModify.execute();
-			return new OperationResult(xResult);
+			const xResult = await this.xCollectionModify.execute()
+			return new OperationResult(xResult)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
-
 }
 
-export default CollectionModify;
+export default CollectionModify

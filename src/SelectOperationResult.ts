@@ -13,45 +13,42 @@
  * limitations under the License.
  */
 
-import OperationResult from './OperationResult';
-import Document from './types/Document';
-import Metadata from "./types/Metadata";
-import Row from "./types/Row";
+import OperationResult from './OperationResult'
+import { ISelectOperationResult } from './interfaces'
+import { Metadata, Row } from './types'
 
-export class SelectOperationResult extends OperationResult{
-
-	private readonly rows: Row[][];
-	private readonly metadata: Metadata;
-	private readonly objects: Object[];
+export class SelectOperationResult extends OperationResult implements ISelectOperationResult {
+	private readonly rows: Row[][]
+	private readonly metadata: Metadata
+	private readonly objects: Object[]
 
 	constructor(xResult: any, rows: Row[][], metadata: Metadata) {
-		super(xResult);
-		this.rows = rows;
-		this.metadata = metadata;
-		this.objects = [];
+		super(xResult)
+		this.rows = rows
+		this.metadata = metadata
+		this.objects = []
 		for (const row of this.rows) {
-			const object: { [key: string]: any } = {};
-			let index: number = 0;
+			const object: { [key: string]: any } = {}
+			let index: number = 0
 			for (const column of this.metadata) {
-				object[column.name] = row[index];
-				index++;
+				object[column.name] = row[index]
+				index++
 			}
-			this.objects.push(object);
+			this.objects.push(object)
 		}
 	}
 
 	public getRows(): Row[][] {
-		return this.rows;
+		return this.rows
 	}
 
 	public getMetadata(): Metadata {
-		return this.metadata;
+		return this.metadata
 	}
 
 	public getObjects(): Object[] {
-		return this.objects;
+		return this.objects
 	}
-
 }
 
-export default SelectOperationResult;
+export default SelectOperationResult

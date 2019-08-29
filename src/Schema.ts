@@ -13,122 +13,119 @@
  * limitations under the License.
  */
 
-import Client from './Client';
-import Session from './Session';
-import Collection from './Collection';
-import Table from './Table';
-import CreateCollectionOptions from './types/CreateCollectionOptions';
+import Collection from './Collection'
+import Table from './Table'
+import { IClient, ICollection, ISchema, ISession, ITable } from './interfaces'
+import { CreateCollectionOptions } from './types'
 
-export class Schema {
+export class Schema implements ISchema {
+	private readonly client: IClient | null
+	private readonly session: ISession
+	private readonly xSchema: any
 
-	private readonly client: Client | null;
-	private readonly session: Session;
-	private readonly xSchema: any;
-
-	constructor(session: Session, xSchema: any) {
-		this.client = session.getClient();
-		this.session = session;
-		this.xSchema = xSchema;
+	constructor(session: ISession, xSchema: any) {
+		this.client = session.getClient()
+		this.session = session
+		this.xSchema = xSchema
 	}
 
-	public getClient(): Client | null {
-		return this.client;
+	public getClient(): IClient | null {
+		return this.client
 	}
 
-	public getSession(): Session {
-		return this.session;
-}
-
-	public getXSchema() {
-		return this.xSchema;
+	public getSession(): ISession {
+		return this.session
 	}
 
-	public async createCollection(name: string, options?: CreateCollectionOptions): Promise<Collection> {
+	public getXSchema(): any {
+		return this.xSchema
+	}
+
+	public async createCollection(name: string, options?: CreateCollectionOptions): Promise<ICollection> {
 		try {
-			const xCollection = await this.xSchema.createCollection(name, options);
-			return new Collection(this, xCollection);
+			const xCollection = await this.xSchema.createCollection(name, options)
+			return new Collection(this, xCollection)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public async dropCollection(name: string): Promise<boolean> {
 		try {
-			return await this.xSchema.dropCollection(name);
+			return await this.xSchema.dropCollection(name)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public async existsInDatabase(): Promise<boolean> {
 		try {
-			return await this.xSchema.existsInDatabase();
+			return await this.xSchema.existsInDatabase()
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public getCollection(name: string): Collection {
+	public getCollection(name: string): ICollection {
 		try {
-			const xCollection = this.xSchema.getCollection(name);
-			return new Collection(this, xCollection);
+			const xCollection = this.xSchema.getCollection(name)
+			return new Collection(this, xCollection)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public getCollectionAsTable(name: string): Table {
+	public getCollectionAsTable(name: string): ITable {
 		try {
-			const xTable = this.xSchema.getCollectionAsTable(name);
-			return new Table(this, xTable);
+			const xTable = this.xSchema.getCollectionAsTable(name)
+			return new Table(this, xTable)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public async getCollections(): Promise<Collection[]> {
+	public async getCollections(): Promise<ICollection[]> {
 		try {
-			const xCollections = await this.xSchema.getCollections();
-			const collections: Collection[] = [];
+			const xCollections = await this.xSchema.getCollections()
+			const collections: ICollection[] = []
 			for (const xCollection of xCollections) {
-				collections.push(new Collection(this, xCollection));
+				collections.push(new Collection(this, xCollection))
 			}
-			return collections;
+			return collections
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public getTable(name: string): Table {
+	public getTable(name: string): ITable {
 		try {
-			const xTable = this.xSchema.getTable(name);
-			return new Table(this, xTable);
+			const xTable = this.xSchema.getTable(name)
+			return new Table(this, xTable)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public async getTables(): Promise<Table[]> {
+	public async getTables(): Promise<ITable[]> {
 		try {
-			const xTables = await this.xSchema.getTables();
-			const tables: Table[] = [];
+			const xTables = await this.xSchema.getTables()
+			const tables: ITable[] = []
 			for (const xTable of xTables) {
-				tables.push(new Table(this, xTable));
+				tables.push(new Table(this, xTable))
 			}
-			return tables;
+			return tables
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	public getName(): string {
-		return this.xSchema.getName();
+		return this.xSchema.getName()
 	}
 
 	public inspect(): Object {
-		return this.xSchema.inspect();
+		return this.xSchema.inspect()
 	}
-
 }
 
-export default Schema;
+export default Schema

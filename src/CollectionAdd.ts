@@ -13,38 +13,36 @@
  * limitations under the License.
  */
 
-import Collection from './Collection';
-import Document from './types/Document';
-import OperationResult from './OperationResult';
+import OperationResult from './OperationResult'
+import { ICollection, ICollectionAdd, IOperationResult } from './interfaces'
+import { Document } from './types'
 
-export class CollectionAdd {
+export class CollectionAdd implements ICollectionAdd {
+	private readonly collection: ICollection
+	private xCollectionAdd: any
 
-	private readonly collection: Collection;
-	private xCollectionAdd: any;
-
-	constructor(collection: Collection, xCollectionAdd: any) {
-		this.collection = collection;
-		this.xCollectionAdd = xCollectionAdd;
+	constructor(collection: ICollection, xCollectionAdd: any) {
+		this.collection = collection
+		this.xCollectionAdd = xCollectionAdd
 	}
 
-	public add(document: Document | Document[]): CollectionAdd {
+	public add(document: Document | Document[]): ICollectionAdd {
 		try {
-			this.xCollectionAdd = this.xCollectionAdd.add(document);
-			return this;
+			this.xCollectionAdd = this.xCollectionAdd.add(document)
+			return this
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
-	public async execute(): Promise<OperationResult> {
+	public async execute(): Promise<IOperationResult> {
 		try {
-			const xResult = await this.xCollectionAdd.execute();
-			return new OperationResult(xResult);
+			const xResult = await this.xCollectionAdd.execute()
+			return new OperationResult(xResult)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
-
 }
 
-export default CollectionAdd;
+export default CollectionAdd
