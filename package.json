@@ -8,7 +8,7 @@
 	"license": "Apache-2.0",
 	"private": false,
 	"dependencies": {
-		"@mysql/xdevapi": "^8.0.17",
+		"@mysql/xdevapi": "^8.0.19",
 		"lodash.isboolean": "^3.0.3",
 		"lodash.isnumber": "^3.0.3",
 		"lodash.isstring": "^4.0.1"

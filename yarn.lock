@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@mysql/xdevapi@^8.0.17":
-  version "8.0.17"
-  resolved "https://registry.yarnpkg.com/@mysql/xdevapi/-/xdevapi-8.0.17.tgz#859303005a1a90f66cae66207ca9ba591f516a6c"
-  integrity sha512-Lnt6SNp+YoMajrhPCAc7EUGbAiiPPiQheO8ItZ3ig/Z6jXPf+u++IBngadyyt0HDu4n8KWFM8pRXFd+vs9oO2w==
+"@mysql/xdevapi@^8.0.19":
+  version "8.0.19"
+  resolved "https://registry.yarnpkg.com/@mysql/xdevapi/-/xdevapi-8.0.19.tgz#6f30d44070c7ee7513764e4ed70f458366b91a7f"
+  integrity sha512-rnC4spN12QgTLauOVGFAF+BLuE7HxgULkqq6IIrsVtT0/JLN7QuBiCw5pvVGvKARgqeSP5TPw7mUsHA3InQ6XA==
   dependencies:
     google-protobuf "3.4.0"
     parsimmon "1.6.2"
