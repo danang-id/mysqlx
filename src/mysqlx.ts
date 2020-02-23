@@ -15,8 +15,6 @@
 
 // @ts-ignore
 import mysql from '@mysql/xdevapi'
-import Client from './Client'
-import Session from './Session'
 import * as Types from './types'
 import * as Interfaces from './interfaces'
 
