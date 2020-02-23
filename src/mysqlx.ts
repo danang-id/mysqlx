@@ -15,11 +15,10 @@
 
 // @ts-ignore
 import mysql from '@mysql/xdevapi'
-import Client from './Client'
-import Session from './Session'
+import ClientClass from './Client';
+import SessionClass from './Session';
 import * as Types from './types'
 import * as Interfaces from './interfaces'
-
 export type Client = Interfaces.IClient
 export type Collection = Interfaces.ICollection
 export type CollectionAdd = Interfaces.ICollectionAdd
@@ -74,14 +73,14 @@ export function expr(expression: Expression, options?: ParserOptions): ProtobufO
 	return mysql.expr(expression, options)
 }
 
-export function getClient(connection: ConnectionOptions, pooling: PoolingOptions): Client {
-	return new Client(connection, pooling)
+export function getClient(connection: ConnectionOptions, pooling: PoolingOptions): ClientClass {
+	return new ClientClass(connection, pooling)
 }
 
-export async function getSession(connection: ConnectionOptions): Promise<Session> {
+export async function getSession(connection: ConnectionOptions): Promise<SessionClass> {
 	try {
 		const xSession = await mysql.getSession(connection)
-		return new Session(null, xSession)
+		return new SessionClass(null, xSession)
 	} catch (error) {
 		throw error
 	}
