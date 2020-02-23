@@ -18,8 +18,8 @@
 		"@types/lodash.isboolean": "^3.0.6",
 		"@types/lodash.isnumber": "^3.0.6",
 		"@types/lodash.isstring": "^4.0.6",
-		"@types/node": "^12.7.1",
-		"dotenv": "^8.0.0",
+		"@types/node": "^12.12.28",
+		"dotenv": "^8.2.0",
 		"prettier": "^1.19.1"
 	},
 	"scripts": {
