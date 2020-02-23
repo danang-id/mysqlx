@@ -77,3 +77,8 @@ parsimmon@1.6.2:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/parsimmon/-/parsimmon-1.6.2.tgz#28fbe6b8caa38ab89f52b77f8c7743563c7d9aff"
   integrity sha512-bJNB0ZQhHyM5KqO2Z5ttQAVn/PZ2pccxaOnMcZ0Su7HA1Iv4GQTfUmzSZ6N3jcsCn9F68PZcypAvF3nDRRL+3g==
+
+prettier@^1.19.1:
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
+  integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
