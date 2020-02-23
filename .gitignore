@@ -45,3 +45,4 @@ typings/
 # Misc files
 desktop.ini
 .DS_Store
+.idea
