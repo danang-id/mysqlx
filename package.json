@@ -1,6 +1,6 @@
 {
 	"name": "mysqlx",
-	"version": "1.1.0",
+	"version": "1.1.5",
 	"description": "Staticly typed MySQL Connector for NodeJS using the X Protocol.",
 	"main": "lib/mysqlx.js",
 	"repository": "https://github.com/danang-id/mysqlx.git",
