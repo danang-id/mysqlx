@@ -15,8 +15,12 @@
 
 export type PoolingOptions = {
 	pooling: {
+		// active: Array
 		enabled?: boolean
+		// idle?: Array
+		maxIdleTime?: number
 		maxSize?: number
+		queueTimeout?: number
 	}
 }
 
