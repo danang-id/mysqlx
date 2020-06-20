@@ -1,10 +1,10 @@
 {
 	"name": "mysqlx",
-	"version": "1.1.6",
+	"version": "1.1.7",
 	"description": "Staticly typed MySQL Connector for NodeJS using the X Protocol.",
 	"main": "lib/mysqlx.js",
 	"repository": "https://github.com/danang-id/mysqlx.git",
-	"author": "Danang Galuh Tegar Prasetyo <danang.galuh.t@gmail.com> (https://github.com/danang-id)",
+	"author": "Danang Galuh Tegar Prasetyo <connect@danang.id> (https://github.com/danang-id)",
 	"license": "Apache-2.0",
 	"private": false,
 	"dependencies": {
