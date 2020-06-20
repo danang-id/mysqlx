@@ -14,13 +14,12 @@
 		"lodash.isstring": "^4.0.1"
 	},
 	"devDependencies": {
-		"@types/dotenv": "^6.1.1",
 		"@types/lodash.isboolean": "^3.0.6",
 		"@types/lodash.isnumber": "^3.0.6",
 		"@types/lodash.isstring": "^4.0.6",
-		"@types/node": "^12.12.28",
+		"@types/node": "^14.0.13",
 		"dotenv": "^8.2.0",
-		"prettier": "^1.19.1"
+		"prettier": "^2.0.5"
 	},
 	"scripts": {
 		"prettify": "prettier ./src/**/*.ts --write",
