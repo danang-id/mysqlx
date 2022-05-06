@@ -38,6 +38,10 @@ export class SelectOperationResult extends OperationResult implements ISelectOpe
 		}
 	}
 
+	fetchAll(): Row[][] {
+        return this.rows
+    }
+
 	public getRows(): Row[][] {
 		return this.rows
 	}

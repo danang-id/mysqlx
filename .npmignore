@@ -1,5 +1,6 @@
 node_modules
 src
 .gitignore
+.github
 tsconfig.json
 .idea
