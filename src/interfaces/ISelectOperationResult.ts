@@ -25,6 +25,7 @@ export interface ISelectOperationResult {
 	getRows(): Row[][]
 	getMetadata(): Metadata
 	getObjects(): Object[]
+	fetchAll(): Row[][]
 }
 
 export default ISelectOperationResult
