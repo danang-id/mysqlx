@@ -11,7 +11,8 @@
 		"@mysql/xdevapi": "^8.0.20",
 		"lodash.isboolean": "^3.0.3",
 		"lodash.isnumber": "^3.0.3",
-		"lodash.isstring": "^4.0.1"
+		"lodash.isstring": "^4.0.1",
+		"typescript": "^4.9.5"
 	},
 	"devDependencies": {
 		"@types/lodash.isboolean": "^3.0.6",

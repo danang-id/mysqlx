@@ -14,7 +14,7 @@
  */
 
 import OperationResult from './OperationResult'
-import { IOperationResult, ITable, ITableInsert } from './interfaces';
+import { IOperationResult, ITable, ITableInsert } from './interfaces'
 
 export class TableInsert implements ITableInsert {
 	private readonly table: ITable

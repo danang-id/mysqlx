@@ -15,8 +15,8 @@
 
 // @ts-ignore
 import mysql from '@mysql/xdevapi'
-import ClientClass from './Client';
-import SessionClass from './Session';
+import ClientClass from './Client'
+import SessionClass from './Session'
 import * as Types from './types'
 import * as Interfaces from './interfaces'
 export type Client = Interfaces.IClient
