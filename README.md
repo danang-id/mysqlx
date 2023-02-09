@@ -1,3 +1,7 @@
+> # :warning: DEPRECATED :warning:
+>
+> The [official](https://github.com/mysql/mysql-connector-nodejs) MySQL Connector for NodeJS has already been written in TypeScript for a while now, so this wrapper is not required anymore.
+
 # Typed MySQL X Dev API (mysqlx)
 
 [![GitHub Release](https://img.shields.io/github/release/danang-id/mysqlx.svg)](https://github.com/danang-id/mysqlx/releases)
@@ -12,16 +16,16 @@
 
 ## List of Contents
 
-* [Typed MySQL X Dev API (mysqlx)](#typed-mysql-x-dev-api-mysqlx)
-  * [List of Contents](#list-of-contents)
-  * [Getting Started](#getting-started)
-  * [Documentation](#documentation)
-  * [Built With](#built-with)
-  * [Contribution](#contribution)
-  * [Version Management](#version-management)
-  * [Authors](#authors)
-  * [License](#license)
-  * [Acknowledgments](#acknowledgments)
+- [Typed MySQL X Dev API (mysqlx)](#typed-mysql-x-dev-api-mysqlx)
+  - [List of Contents](#list-of-contents)
+  - [Getting Started](#getting-started)
+  - [Documentation](#documentation)
+  - [Built With](#built-with)
+  - [Contribution](#contribution)
+  - [Version Management](#version-management)
+  - [Authors](#authors)
+  - [License](#license)
+  - [Acknowledgments](#acknowledgments)
 
 ## Getting Started
 
